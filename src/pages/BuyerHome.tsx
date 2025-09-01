@@ -1,10 +1,12 @@
 import { useState } from 'react';
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import ProductCard from '@/components/ProductCard';
+import { useNavigate } from 'react-router-dom';
 import Layout from '@/components/Layout';
-import { Search, MapPin, Filter, Bell } from "lucide-react";
+import ProductCard from '@/components/ProductCard';
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Badge } from "@/components/ui/badge";
+import { Card, CardContent } from "@/components/ui/card";
+import { Search, MapPin, Filter, Star, Bell } from "lucide-react";
 
 // Mock data for demonstration
 const categories = [
@@ -64,6 +66,7 @@ const mockProducts = [
 ];
 
 const BuyerHome = () => {
+  const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
 
@@ -133,11 +136,13 @@ const BuyerHome = () => {
 
           <div className="grid grid-cols-2 gap-3">
             {mockProducts.map((product) => (
-              <ProductCard
+              <div
                 key={product.id}
-                {...product}
+                onClick={() => navigate(`/product/${product.id}`)}
                 className="cursor-pointer hover:scale-[1.02] transition-transform"
-              />
+              >
+                <ProductCard {...product} />
+              </div>
             ))}
           </div>
         </div>
