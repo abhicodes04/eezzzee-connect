@@ -5,8 +5,12 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import BuyerHome from "./pages/BuyerHome";
+import Browse from "./pages/Browse";
+import Discounts from "./pages/Discounts";
+import Profile from "./pages/Profile";
 import VendorDashboard from "./pages/VendorDashboard";
 import VendorProducts from "./pages/VendorProducts";
+import VendorStore from "./pages/VendorStore";
 import ProductDetail from "./pages/ProductDetail";
 import AddProduct from "./pages/AddProduct";
 import VerifyDiscount from "./pages/VerifyDiscount";
@@ -24,8 +28,12 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/home" element={<BuyerHome />} />
+          <Route path="/browse" element={<Browse />} />
+          <Route path="/discounts" element={<Discounts />} />
+          <Route path="/profile" element={<Profile />} />
           <Route path="/vendor" element={<VendorDashboard />} />
           <Route path="/vendor/products" element={<VendorProducts />} />
+          <Route path="/vendor/store" element={<VendorStore />} />
           <Route path="/vendor/add-product" element={<AddProduct />} />
           <Route path="/vendor/verify-discount" element={<VerifyDiscount />} />
           <Route path="/referral" element={<ReferralCenter />} />

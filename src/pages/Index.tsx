@@ -121,91 +121,169 @@ const Index = () => {
       default:
         return (
           <div className="space-y-8">
-            {/* Hero Section */}
-            <div className="text-center space-y-6">
-              <div className="relative">
-                <img 
-                  src={heroImage} 
-                  alt="Eezzzee Marketplace Community" 
-                  className="w-full max-w-2xl mx-auto rounded-2xl shadow-strong"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent rounded-2xl"></div>
-              </div>
-              
-              <div className="space-y-4">
-                <h1 className="text-4xl md:text-5xl font-bold text-foreground">
-                  Welcome to{' '}
-                  <span className="bg-gradient-hero bg-clip-text text-transparent">
-                    Eezzzee
-                  </span>
+            {/* Navigation Header */}
+            <header className="flex items-center justify-between py-4 px-6 bg-card border-b sticky top-0 z-50">
+              <div className="flex items-center space-x-4">
+                <h1 className="text-2xl font-bold bg-gradient-hero bg-clip-text text-transparent">
+                  Eezzzee
                 </h1>
-                <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-                  Connect with local vendors, discover amazing products, and get exclusive discounts in your community
-                </p>
               </div>
-            </div>
+              <nav className="hidden lg:flex items-center space-x-8">
+                <a href="#categories" className="text-foreground hover:text-primary transition-colors">Categories</a>
+                <a href="#featured" className="text-foreground hover:text-primary transition-colors">Featured</a>
+                <a href="#vendors" className="text-foreground hover:text-primary transition-colors">Vendors</a>
+                <a href="#about" className="text-foreground hover:text-primary transition-colors">About</a>
+              </nav>
+              <div className="flex items-center space-x-4">
+                <Button 
+                  variant="outline" 
+                  onClick={() => setCurrentStep('login')}
+                  className="hidden sm:flex"
+                >
+                  Sign In
+                </Button>
+                <Button 
+                  onClick={() => setCurrentStep('role-select')}
+                  className="bg-gradient-primary hover:opacity-90"
+                >
+                  Get Started
+                </Button>
+              </div>
+            </header>
 
-            {/* Features */}
-            <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
-              <div className="text-center p-6 rounded-xl bg-primary-lighter/50 border border-primary-lighter">
-                <Shield className="h-12 w-12 text-primary mx-auto mb-4" />
-                <h3 className="text-lg font-semibold mb-2">Trusted Community</h3>
-                <p className="text-sm text-muted-foreground">
-                  Connect with verified local vendors in your society and neighborhood
-                </p>
+            {/* Hero Section */}
+            <section className="relative py-20 px-6 text-center overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-subtle"></div>
+              <div className="relative max-w-6xl mx-auto">
+                <div className="grid lg:grid-cols-2 gap-12 items-center">
+                  <div className="text-left">
+                    <h1 className="text-5xl lg:text-7xl font-bold mb-6 leading-tight">
+                      Your Local{' '}
+                      <span className="bg-gradient-hero bg-clip-text text-transparent">
+                        Marketplace
+                      </span>
+                    </h1>
+                    <p className="text-xl text-muted-foreground mb-8 max-w-lg">
+                      Connect with trusted local vendors, discover amazing products, 
+                      and get exclusive discounts in your community.
+                    </p>
+                    <div className="flex flex-col sm:flex-row gap-4 mb-8">
+                      <Button 
+                        size="lg" 
+                        onClick={() => setCurrentStep('role-select')}
+                        className="bg-gradient-primary hover:opacity-90 px-8 py-4 text-lg"
+                      >
+                        Start Shopping
+                        <ArrowRight className="ml-2 h-5 w-5" />
+                      </Button>
+                      <Button 
+                        variant="outline" 
+                        size="lg"
+                        onClick={() => setCurrentStep('login')}
+                        className="px-8 py-4 text-lg"
+                      >
+                        I'm a Vendor
+                      </Button>
+                    </div>
+                    <div className="flex items-center gap-6 text-sm text-muted-foreground">
+                      <div className="flex items-center gap-1">
+                        {[...Array(5)].map((_, i) => (
+                          <span key={i} className="text-yellow-400 text-lg">⭐</span>
+                        ))}
+                      </div>
+                      <span>10,000+ happy customers</span>
+                      <span>•</span>
+                      <span>500+ local vendors</span>
+                    </div>
+                  </div>
+                  
+                  <div className="relative">
+                    <img 
+                      src={heroImage} 
+                      alt="Eezzzee Marketplace Community" 
+                      className="w-full rounded-2xl shadow-strong"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-2xl"></div>
+                  </div>
+                </div>
               </div>
-              
-              <div className="text-center p-6 rounded-xl bg-secondary-lighter/50 border border-secondary-lighter">
-                <Gift className="h-12 w-12 text-secondary mx-auto mb-4" />
-                <h3 className="text-lg font-semibold mb-2">Exclusive Discounts</h3>
-                <p className="text-sm text-muted-foreground">
-                  Get unique discount codes and earn loyalty coins on every purchase
-                </p>
-              </div>
-              
-              <div className="text-center p-6 rounded-xl bg-success-lighter/50 border border-success-lighter">
-                <Users className="h-12 w-12 text-success mx-auto mb-4" />
-                <h3 className="text-lg font-semibold mb-2">Local Network</h3>
-                <p className="text-sm text-muted-foreground">
-                  Support local businesses and build stronger community connections
-                </p>
-              </div>
-            </div>
+            </section>
 
-            {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
-              <Button 
-                onClick={() => setCurrentStep('role-select')}
-                className="flex-1 bg-gradient-primary hover:opacity-90" 
-                size="lg"
-              >
-                Get Started
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
-              <Button 
-                variant="outline" 
-                onClick={() => setCurrentStep('login')}
-                size="lg"
-                className="flex-1"
-              >
-                I Have Account
-              </Button>
-            </div>
-
-            {/* Social Proof */}
-            <div className="text-center space-y-2">
-              <p className="text-sm text-muted-foreground">
-                Join 10,000+ happy customers and vendors
-              </p>
-              <div className="flex justify-center items-center gap-1">
-                {[...Array(5)].map((_, i) => (
-                  <span key={i} className="text-yellow-400 text-lg">⭐</span>
-                ))}
-                <span className="ml-2 text-sm text-muted-foreground">
-                  4.8/5 community rating
-                </span>
+            {/* Features Grid */}
+            <section id="categories" className="py-20 px-6">
+              <div className="max-w-6xl mx-auto">
+                <div className="text-center mb-16">
+                  <h2 className="text-4xl font-bold mb-4">Why Choose Eezzzee?</h2>
+                  <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+                    Experience the future of local commerce with our innovative marketplace platform
+                  </p>
+                </div>
+                
+                <div className="grid lg:grid-cols-3 gap-8">
+                  <div className="text-center p-8 rounded-2xl bg-gradient-card border border-primary-lighter hover:shadow-strong transition-all duration-300">
+                    <div className="h-16 w-16 bg-gradient-primary rounded-full flex items-center justify-center mx-auto mb-6">
+                      <Shield className="h-8 w-8 text-white" />
+                    </div>
+                    <h3 className="text-2xl font-semibold mb-4">Trusted Community</h3>
+                    <p className="text-muted-foreground leading-relaxed">
+                      Connect with verified local vendors in your society and neighborhood. 
+                      Every vendor is carefully vetted for quality and reliability.
+                    </p>
+                  </div>
+                  
+                  <div className="text-center p-8 rounded-2xl bg-gradient-card border border-secondary-lighter hover:shadow-strong transition-all duration-300">
+                    <div className="h-16 w-16 bg-gradient-secondary rounded-full flex items-center justify-center mx-auto mb-6">
+                      <Gift className="h-8 w-8 text-white" />
+                    </div>
+                    <h3 className="text-2xl font-semibold mb-4">Exclusive Discounts</h3>
+                    <p className="text-muted-foreground leading-relaxed">
+                      Get unique discount codes and earn loyalty coins on every purchase. 
+                      Save more while supporting local businesses.
+                    </p>
+                  </div>
+                  
+                  <div className="text-center p-8 rounded-2xl bg-gradient-card border border-success-lighter hover:shadow-strong transition-all duration-300">
+                    <div className="h-16 w-16 bg-gradient-primary rounded-full flex items-center justify-center mx-auto mb-6">
+                      <Users className="h-8 w-8 text-white" />
+                    </div>
+                    <h3 className="text-2xl font-semibold mb-4">Local Network</h3>
+                    <p className="text-muted-foreground leading-relaxed">
+                      Support local businesses and build stronger community connections. 
+                      Discover hidden gems in your neighborhood.
+                    </p>
+                  </div>
+                </div>
               </div>
-            </div>
+            </section>
+
+            {/* Call to Action */}
+            <section className="py-20 px-6 bg-gradient-hero text-white">
+              <div className="max-w-4xl mx-auto text-center">
+                <h2 className="text-4xl lg:text-5xl font-bold mb-6">
+                  Ready to Transform Your Shopping Experience?
+                </h2>
+                <p className="text-xl opacity-90 mb-8 max-w-2xl mx-auto">
+                  Join thousands of satisfied customers and vendors who've made Eezzzee their go-to marketplace.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                  <Button 
+                    size="lg" 
+                    onClick={() => setCurrentStep('role-select')}
+                    className="bg-white text-primary hover:bg-white/90 px-8 py-4 text-lg"
+                  >
+                    Join as Buyer
+                  </Button>
+                  <Button 
+                    variant="outline" 
+                    size="lg"
+                    onClick={() => setCurrentStep('role-select')}
+                    className="border-white text-white hover:bg-white/10 px-8 py-4 text-lg"
+                  >
+                    Become a Vendor
+                  </Button>
+                </div>
+              </div>
+            </section>
           </div>
         );
     }
