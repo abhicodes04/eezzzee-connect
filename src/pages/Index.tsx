@@ -277,7 +277,7 @@ const Index = () => {
                     variant="outline" 
                     size="lg"
                     onClick={() => setCurrentStep('role-select')}
-                    className="border-white text-secondary hover:bg-white/10 px-8 py-4 text-lg"
+                    className="border-white text-secondary hover:bg-white/90 px-8 py-4 text-lg"
                   >
                     Become a Vendor
                   </Button>
