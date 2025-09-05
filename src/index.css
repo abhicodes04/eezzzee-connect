@@ -109,4 +109,62 @@ All colors MUST be HSL.
   body {
     @apply bg-background text-foreground;
   }
+
+  /* Enhanced responsive utilities */
+  .container {
+    @apply w-full mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Mobile-first responsive breakpoints */
+  @screen sm {
+    .container {
+      max-width: 640px;
+    }
+  }
+
+  @screen md {
+    .container {
+      max-width: 768px;
+    }
+  }
+
+  @screen lg {
+    .container {
+      max-width: 1024px;
+    }
+  }
+
+  @screen xl {
+    .container {
+      max-width: 1280px;
+    }
+  }
+
+  /* Touch-friendly sizing for mobile */
+  .touch-target {
+    @apply min-h-[44px] min-w-[44px];
+  }
+
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--muted));
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--muted-foreground) / 0.3);
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--muted-foreground) / 0.5);
+  }
 }

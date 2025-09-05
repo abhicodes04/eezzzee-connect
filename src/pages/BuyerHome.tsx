@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
-import { Search, MapPin, Filter, Star, Bell } from "lucide-react";
+import { Search, MapPin, Filter, Star, Bell, Gift, User } from "lucide-react";
 
 // Mock data for demonstration
 const categories = [
@@ -76,16 +76,36 @@ const BuyerHome = () => {
         {/* Header */}
         <div className="bg-gradient-primary text-primary-foreground p-4 pb-6">
           <div className="flex items-center justify-between mb-4">
-            <div className="flex items-center gap-2">
-              <MapPin className="h-5 w-5" />
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center">
+                <User className="h-5 w-5 text-white" />
+              </div>
               <div>
-                <p className="text-sm opacity-90">Your Location</p>
-                <p className="font-semibold">Sector 14, Gurgaon</p>
+                <p className="text-sm opacity-90">Good morning</p>
+                <p className="font-semibold">Rahul Kumar</p>
               </div>
             </div>
-            <Button variant="ghost" size="icon" className="text-primary-foreground hover:bg-white/10">
-              <Bell className="h-5 w-5" />
-            </Button>
+            <div className="flex gap-2">
+              <Button 
+                variant="ghost" 
+                size="icon"
+                onClick={() => navigate('/referral')}
+                className="text-primary-foreground hover:bg-white/10 relative"
+              >
+                <Gift className="h-5 w-5" />
+                <div className="absolute -top-1 -right-1 w-3 h-3 bg-secondary rounded-full text-xs flex items-center justify-center text-white">
+                  !
+                </div>
+              </Button>
+              <Button variant="ghost" size="icon" className="text-primary-foreground hover:bg-white/10">
+                <Bell className="h-5 w-5" />
+              </Button>
+            </div>
+          </div>
+          
+          <div className="flex items-center gap-2 mb-4">
+            <MapPin className="h-4 w-4 opacity-80" />
+            <p className="text-sm opacity-90">Sector 14, Gurgaon</p>
           </div>
 
           <div className="relative">
@@ -151,11 +171,15 @@ const BuyerHome = () => {
         <div className="p-4">
           <h2 className="text-lg font-semibold mb-3">Quick Actions</h2>
           <div className="grid grid-cols-2 gap-3">
-            <Button variant="outline" className="h-16 flex-col gap-2">
+            <Button variant="outline" className="h-16 flex-col gap-2 touch-target">
               <span className="text-2xl">🎯</span>
               <span className="text-sm">My Discounts</span>
             </Button>
-            <Button variant="outline" className="h-16 flex-col gap-2">
+            <Button 
+              variant="outline" 
+              className="h-16 flex-col gap-2 touch-target"
+              onClick={() => navigate('/referral')}
+            >
               <span className="text-2xl">💰</span>
               <span className="text-sm">Loyalty Coins</span>
             </Button>

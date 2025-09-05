@@ -8,7 +8,7 @@ import { useToast } from "@/hooks/use-toast";
 
 interface RegisterFormProps {
   userRole: 'buyer' | 'vendor';
-  onRegister: (phone: string) => void;
+  onRegister: (phone: string, needsOnboarding?: boolean) => void;
   onSwitchToLogin: () => void;
 }
 
@@ -49,7 +49,8 @@ const RegisterForm = ({ userRole, onRegister, onSwitchToLogin }: RegisterFormPro
     setIsLoading(true);
     // Simulate API call
     setTimeout(() => {
-      onRegister(formData.phone);
+      // For vendors, we need onboarding after registration
+      onRegister(formData.phone, userRole === 'vendor');
       setIsLoading(false);
     }, 1500);
   };

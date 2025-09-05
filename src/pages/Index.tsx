@@ -4,16 +4,18 @@ import RoleSelector from '@/components/RoleSelector';
 import LoginForm from '@/components/auth/LoginForm';
 import RegisterForm from '@/components/auth/RegisterForm';
 import OTPVerification from '@/components/auth/OTPVerification';
+import VendorOnboardingForm from '@/components/auth/VendorOnboardingForm';
 import heroImage from '@/assets/hero-marketplace.jpg';
 import { ArrowRight, Shield, Users, Gift } from "lucide-react";
 import { useNavigate } from 'react-router-dom';
 
-type AuthStep = 'landing' | 'role-select' | 'login' | 'register' | 'otp-verify';
+type AuthStep = 'landing' | 'role-select' | 'login' | 'register' | 'otp-verify' | 'vendor-onboarding';
 
 const Index = () => {
   const [currentStep, setCurrentStep] = useState<AuthStep>('landing');
   const [selectedRole, setSelectedRole] = useState<'buyer' | 'vendor' | null>(null);
   const [verificationPhone, setVerificationPhone] = useState('');
+  const [needsVendorOnboarding, setNeedsVendorOnboarding] = useState(false);
   const navigate = useNavigate();
 
   const handleRoleSelect = (role: 'buyer' | 'vendor') => {
@@ -26,17 +28,24 @@ const Index = () => {
     setCurrentStep('otp-verify');
   };
 
-  const handleRegister = (phone: string) => {
+  const handleRegister = (phone: string, needsOnboarding = false) => {
     setVerificationPhone(phone);
+    setNeedsVendorOnboarding(needsOnboarding);
     setCurrentStep('otp-verify');
   };
 
   const handleVerified = () => {
     if (selectedRole === 'buyer') {
       navigate('/home');
+    } else if (needsVendorOnboarding) {
+      setCurrentStep('vendor-onboarding');
     } else {
       navigate('/vendor');
     }
+  };
+
+  const handleVendorOnboardingComplete = () => {
+    navigate('/vendor');
   };
 
   const renderStep = () => {
@@ -99,6 +108,14 @@ const Index = () => {
               onBack={() => setCurrentStep(selectedRole ? 'register' : 'login')}
             />
           </div>
+        );
+      
+      case 'vendor-onboarding':
+        return (
+          <VendorOnboardingForm 
+            onComplete={handleVendorOnboardingComplete}
+            onBack={() => setCurrentStep('otp-verify')}
+          />
         );
       
       default:

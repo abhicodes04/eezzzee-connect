@@ -10,6 +10,7 @@ import VendorProducts from "./pages/VendorProducts";
 import ProductDetail from "./pages/ProductDetail";
 import AddProduct from "./pages/AddProduct";
 import VerifyDiscount from "./pages/VerifyDiscount";
+import ReferralCenter from "./pages/ReferralCenter";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -27,6 +28,7 @@ const App = () => (
           <Route path="/vendor/products" element={<VendorProducts />} />
           <Route path="/vendor/add-product" element={<AddProduct />} />
           <Route path="/vendor/verify-discount" element={<VerifyDiscount />} />
+          <Route path="/referral" element={<ReferralCenter />} />
           <Route path="/product/:id" element={<ProductDetail />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
