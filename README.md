@@ -60,36 +60,6 @@ This project is built with:
 - shadcn-ui
 - Tailwind CSS
 
-## Folder 
-EEZZZEE-CONNECT/
-├── node_modules/          # Contains all npm dependencies
-├── public/                # Public assets like index.html, images
-├── src/                   # Source code of the project
-│   ├── assets/            # Static assets like images, fonts, etc.
-│   ├── components/        # React components
-│   ├── hooks/             # Custom hooks
-│   ├── lib/               # Utility functions and helpers
-│   ├── pages/             # Page components or views
-│   ├── App.css            # Global styles for the app
-│   ├── App.tsx            # Main component that holds the app structure
-│   ├── index.css          # Entry point for global styles
-│   ├── main.tsx           # Main TypeScript entry point
-│   └── vite-env.d.ts      # TypeScript definition file for Vite
-├── .gitignore             # Git ignore configuration
-├── bun.lockb              # Lock file for Bun package manager
-├── components.json        # shadcn-ui component config
-├── eslint.config.js       # ESLint configuration for code linting
-├── index.html             # The main HTML file for the app
-├── package-lock.json      # NPM package lock file
-├── package.json           # NPM package configuration file
-├── postcss.config.js      # Configuration for PostCSS (CSS processing)
-├── README.md              # Project documentation
-├── tailwind.config.js     # Tailwind CSS configuration
-├── tsconfig.app.json      # TypeScript configuration for the app
-├── tsconfig.json          # Main TypeScript configuration
-├── tsconfig.node.json     # TypeScript configuration for Node.js
-└── vite.config.ts         # Vite configuration for build and development
-
 ## How can I deploy this project?
 
 Simply open [Lovable](https://lovable.dev/projects/a75a040d-8e5e-46c8-9369-0a016d0f4728) and click on Share -> Publish.
