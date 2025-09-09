@@ -60,7 +60,7 @@ This project is built with:
 - shadcn-ui
 - Tailwind CSS
 
-## folder st. (added)
+## 📂 Folder Structure
 EEZZZEE-CONNECT/
 ├── node_modules/          # Contains all npm dependencies
 ├── public/                # Public assets like index.html, images
