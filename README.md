@@ -60,7 +60,7 @@ This project is built with:
 - shadcn-ui
 - Tailwind CSS
 
-## 📂 Folder Structure
+## Folder 
 EEZZZEE-CONNECT/
 ├── node_modules/          # Contains all npm dependencies
 ├── public/                # Public assets like index.html, images
@@ -77,13 +77,13 @@ EEZZZEE-CONNECT/
 │   └── vite-env.d.ts      # TypeScript definition file for Vite
 ├── .gitignore             # Git ignore configuration
 ├── bun.lockb              # Lock file for Bun package manager
-├── components.json        # List of component-related configurations
+├── components.json        # shadcn-ui component config
 ├── eslint.config.js       # ESLint configuration for code linting
 ├── index.html             # The main HTML file for the app
 ├── package-lock.json      # NPM package lock file
 ├── package.json           # NPM package configuration file
 ├── postcss.config.js      # Configuration for PostCSS (CSS processing)
-├── README.md              # Project README file
+├── README.md              # Project documentation
 ├── tailwind.config.js     # Tailwind CSS configuration
 ├── tsconfig.app.json      # TypeScript configuration for the app
 ├── tsconfig.json          # Main TypeScript configuration
