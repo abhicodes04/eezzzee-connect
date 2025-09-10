@@ -16,6 +16,8 @@ import AddProduct from "./pages/AddProduct";
 import VerifyDiscount from "./pages/VerifyDiscount";
 import ReferralCenter from "./pages/ReferralCenter";
 import NotFound from "./pages/NotFound";
+import LoginForm from "./pages/LoginForm";
+import VendorRegistration from "./pages/VendorRegistration";
 
 const queryClient = new QueryClient();
 
@@ -27,9 +29,12 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
-          <Route path="/home" element={<BuyerHome />} />
+          {/* <Route path="/home" element={<BuyerHome />} />
           <Route path="/browse" element={<Browse />} />
-          <Route path="/discounts" element={<Discounts />} />
+          <Route path="/discounts" element={<Discounts />} /> */}
+          <Route path="/login" element={<LoginForm />} />   {/* ✅ New Route */}
+          <Route path="/register" element={<VendorRegistration />} />   {/* ✅ New Route */}
+
           <Route path="/profile" element={<Profile />} />
           <Route path="/vendor" element={<VendorDashboard />} />
           <Route path="/vendor/products" element={<VendorProducts />} />

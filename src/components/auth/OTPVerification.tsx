@@ -12,7 +12,7 @@ interface OTPVerificationProps {
 }
 
 const OTPVerification = ({ phone, onVerified, onBack }: OTPVerificationProps) => {
-  const [otp, setOtp] = useState(['', '', '', '', '', '']);
+  const [otp, setOtp] = useState(['', '', '', '']); // ✅ Only 4 inputs now
   const [isLoading, setIsLoading] = useState(false);
   const [canResend, setCanResend] = useState(false);
   const [countdown, setCountdown] = useState(30);
@@ -35,7 +35,7 @@ const OTPVerification = ({ phone, onVerified, onBack }: OTPVerificationProps) =>
     setOtp(newOtp);
 
     // Auto-focus next input
-    if (value && index < 5) {
+    if (value && index < otp.length - 1) { // ✅ fixed for 4 digits
       const nextInput = document.getElementById(`otp-${index + 1}`);
       nextInput?.focus();
     }
@@ -50,10 +50,10 @@ const OTPVerification = ({ phone, onVerified, onBack }: OTPVerificationProps) =>
 
   const handleVerify = async () => {
     const otpString = otp.join('');
-    if (otpString.length !== 6) {
+    if (otpString.length !== 4) { // ✅ only 4 digits
       toast({
         title: "Invalid OTP",
-        description: "Please enter the complete 6-digit OTP",
+        description: "Please enter the complete 4-digit OTP",
         variant: "destructive"
       });
       return;
@@ -62,7 +62,7 @@ const OTPVerification = ({ phone, onVerified, onBack }: OTPVerificationProps) =>
     setIsLoading(true);
     // Simulate API verification
     setTimeout(() => {
-      if (otpString === '123456') {
+      if (otpString === '1234') { // ✅ mock 4-digit OTP
         toast({
           title: "Phone Verified!",
           description: "Your account has been successfully verified",
@@ -82,7 +82,7 @@ const OTPVerification = ({ phone, onVerified, onBack }: OTPVerificationProps) =>
   const handleResend = () => {
     setCanResend(false);
     setCountdown(30);
-    setOtp(['', '', '', '', '', '']);
+    setOtp(['', '', '', '']); // ✅ reset 4 boxes
     toast({
       title: "OTP Sent",
       description: "A new OTP has been sent to your phone",
@@ -99,7 +99,7 @@ const OTPVerification = ({ phone, onVerified, onBack }: OTPVerificationProps) =>
         </div>
         <CardTitle className="text-2xl">Verify Phone Number</CardTitle>
         <CardDescription>
-          We've sent a 6-digit OTP to {maskedPhone}
+          We've sent a 4-digit OTP to {maskedPhone}
         </CardDescription>
       </CardHeader>
       <CardContent className="space-y-6">
@@ -122,7 +122,7 @@ const OTPVerification = ({ phone, onVerified, onBack }: OTPVerificationProps) =>
           onClick={handleVerify}
           className="w-full bg-gradient-primary hover:opacity-90" 
           size="lg"
-          disabled={isLoading || otp.join('').length !== 6}
+          disabled={isLoading || otp.join('').length !== 4}
         >
           {isLoading ? "Verifying..." : "Verify OTP"}
         </Button>
