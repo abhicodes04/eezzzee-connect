@@ -16,6 +16,12 @@ import AddProduct from "./pages/AddProduct";
 import VerifyDiscount from "./pages/VerifyDiscount";
 import ReferralCenter from "./pages/ReferralCenter";
 import NotFound from "./pages/NotFound";
+//import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import SuperadminLogin from "./pages/superadmin/SuperadminLogin";
+import SuperadminDashboard from "./pages/superadmin/SuperadminDashboard";
+import LoginForm from "./pages/LoginForm";
+import RegisterForm from "./components/auth/RegisterForm";
+import UserRegistration from "./components/UserRegistration";
 
 const queryClient = new QueryClient();
 
@@ -27,18 +33,27 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
+          <Route path="/login" element={<LoginForm />} />   {/* ✅ New Route */}
+          <Route path="/register" element={<UserRegistration />} />   {/* ✅ New Route */}
+
           <Route path="/home" element={<BuyerHome />} />
           <Route path="/browse" element={<Browse />} />
           <Route path="/discounts" element={<Discounts />} />
           <Route path="/profile" element={<Profile />} />
-          <Route path="/vendor" element={<VendorDashboard />} />
+          {/* <Route path="/vendor" element={<VendorDashboard />} />
           <Route path="/vendor/products" element={<VendorProducts />} />
           <Route path="/vendor/store" element={<VendorStore />} />
           <Route path="/vendor/add-product" element={<AddProduct />} />
           <Route path="/vendor/verify-discount" element={<VerifyDiscount />} />
           <Route path="/referral" element={<ReferralCenter />} />
-          <Route path="/product/:id" element={<ProductDetail />} />
+          <Route path="/product/:id" element={<ProductDetail />} /> */}
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+          <Route path="*" element={<NotFound />} />
+
+          {/* SuperAdmin Routes */}
+          <Route path="/owner/superadmin/login" element={<SuperadminLogin />} />
+          <Route path="/owner/superadmin/admindashboard" element={<SuperadminDashboard />} />
+          {/* Catch-all */}
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
